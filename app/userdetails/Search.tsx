@@ -4,8 +4,8 @@ import ladyPhoto from "../images/lady.jpg"
 import manPhoto from "../images/man.jpg"
 
 const Search = () => {
-  let [empList, setEmplist] = useState<employeeTS[]>([])
-  let [searchVal, setSearchVal] = useState<string>("")
+  const [empList, setEmplist] = useState<employeeTS[]>([])
+  const [searchVal, setSearchVal] = useState<string>("")
 
   useEffect(() => {
     if(searchVal == ""){
@@ -13,7 +13,7 @@ const Search = () => {
       return
     }
     async function performSrch(){
-      let request = await fetch( '/api/searchEmp', {
+      const request = await fetch( '/api/searchEmp', {
         'method': 'POST', 
         'headers': {
           'Content-Type': 'application/json'
@@ -22,7 +22,7 @@ const Search = () => {
           searchVal: searchVal
         })
       })
-      let response = await request.json()
+      const response = await request.json()
       if(response.success){
         setEmplist(response.list)
       }

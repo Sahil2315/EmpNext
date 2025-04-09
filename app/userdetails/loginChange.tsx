@@ -3,19 +3,19 @@ import { empContext } from "./userProvider";
 import crossSvg from "../images/cross.svg"
 
 const LoginChange = ({currSelected, setSelected, visible, toggle}: {currSelected: string, setSelected: (curr: string) => void, visible: boolean, toggle: (vis: boolean) => void}) => {
-  let centerDiv = useRef<HTMLDivElement>(null)
-  let {user} = useContext(empContext)
-  let [username, setUsername] = useState("")
-  let [password, setPassword] = useState("")
-  let [newUsername, setNUN] = useState("")
-  let [newPassword, setNewPW] = useState("")
-  let [oldPassword, setOldPW] = useState("")
-  let [confirmPassword, setConfirmPW] = useState("")
-  let [cscreenVis, toggleCscreen] = useState(false)
+  const centerDiv = useRef<HTMLDivElement>(null)
+  const {user} = useContext(empContext)
+  const [username, setUsername] = useState("")
+  const [password, setPassword] = useState("")
+  const [newUsername, setNUN] = useState("")
+  const [newPassword, setNewPW] = useState("")
+  const [oldPassword, setOldPW] = useState("")
+  const [confirmPassword, setConfirmPW] = useState("")
+  const [cscreenVis, toggleCscreen] = useState(false)
 
   useEffect(() => {
     async function Initiate(){
-      let request = await fetch('/api/loginDet', {
+      const request = await fetch('/api/loginDet', {
         'method': 'POST', 
         'headers': {
           'Content-Type': 'application/json'
@@ -24,7 +24,7 @@ const LoginChange = ({currSelected, setSelected, visible, toggle}: {currSelected
           'empid': user.empid 
         })
       })
-      let response = await request.json()
+      const response = await request.json()
       if(response.success){
         setUsername(response.username)
       }
@@ -60,7 +60,7 @@ const LoginChange = ({currSelected, setSelected, visible, toggle}: {currSelected
         alert("Password Cannot Be Empty")
       }
       else{
-        let request = await fetch('/api/change/changeUN', {
+        const request = await fetch('/api/change/changeUN', {
           'method': 'POST', 
           'headers': {
             'Content-Type': 'application/json'
@@ -72,7 +72,7 @@ const LoginChange = ({currSelected, setSelected, visible, toggle}: {currSelected
             'password': password
           })
         })
-        let response = await request.json()
+        const response = await request.json()
         if(response.success){
           alert("Username Updated Successfully")
           setUsername(newUsername)
@@ -95,7 +95,7 @@ const LoginChange = ({currSelected, setSelected, visible, toggle}: {currSelected
         alert("Passwords Do Not Match")
       }
       else{
-        let request = await fetch('/api/change/changePW', {
+        const request = await fetch('/api/change/changePW', {
           'method': 'POST', 
           'headers': {
             'Content-Type': 'application/json'
@@ -107,7 +107,7 @@ const LoginChange = ({currSelected, setSelected, visible, toggle}: {currSelected
             'newPW': newPassword 
           })
         })
-        let response = await request.json()
+        const response = await request.json()
         if(response.success){
           alert("Password Updated Successfully")
           toggle(false)

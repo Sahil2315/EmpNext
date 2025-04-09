@@ -15,12 +15,12 @@ type leaveTS = {
 const Leaves = () => {
   const today = new Date()
   const todayString = `${today.getFullYear()}-${today.getMonth() <= 9 ? "0" + (today.getMonth() + 1) : today.getMonth() + 1}-${today.getDate()}`
-  let [fromDate, setFrom] = useState(todayString)
-  let [toDate, setTo] = useState(todayString)
-  let [reason, setReason] = useState("")
-  let [category, setCat] = useState("PL")
-  let {user} = useContext(empContext)
-  let [currList, setCurrList] = useState<leaveTS[]>([])
+  const [fromDate, setFrom] = useState(todayString)
+  const [toDate, setTo] = useState(todayString)
+  const [reason, setReason] = useState("")
+  const [category, setCat] = useState("PL")
+  const {user} = useContext(empContext)
+  const [currList, setCurrList] = useState<leaveTS[]>([])
 
   useEffect(() => {
     setTo(fromDate)
@@ -28,7 +28,7 @@ const Leaves = () => {
 
   useEffect(()=> {
     async function Inititialize(){
-      let request = await fetch( '/api/leaves', {
+      const request = await fetch( '/api/leaves', {
         'method': 'POST', 
         'headers': {
           'Content-Type': 'application/json'
@@ -37,7 +37,7 @@ const Leaves = () => {
           'empid': user.empid
         })
       })
-      let response = await request.json()
+      const response = await request.json()
       if(response.success){
         setCurrList(response.leaves)
         console.log(response)
@@ -48,7 +48,7 @@ const Leaves = () => {
 
   async function submitNew(){
     if(reason == "") return
-    let request = await fetch( '/api/leaves/newApplication', {
+    const request = await fetch( '/api/leaves/newApplication', {
       'method': 'POST', 
       'headers': {
         'Content-Type': 'application/json'
@@ -62,13 +62,13 @@ const Leaves = () => {
         'category': category
       })
     })
-    let response = await request.json()
+    const response = await request.json()
     if(response.success){
       alert("Leave Application Submitted Successfully")
     }
   }
 
-  let abbMapper = (abb: string) => {
+  const abbMapper = (abb: string) => {
     if(abb == "PL") return "Paid Leave"
     else if(abb == "SL") return "Sick Leave"
     else return "Casual Leave"

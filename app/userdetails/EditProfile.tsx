@@ -10,18 +10,18 @@ type changeTS = {
 };
 
 const EditProfile = () => {
-  let { user } = useContext(empContext);
-  let [changes, setChanges] = useState<changeTS[]>([]);
-  let [field, setField] = useState<string>("");
-  let [value, setValue] = useState<string>("");
-  let [org, toggleorg] = useState<boolean>(true);
-  let [ovVisible, toggleOv] = useState<boolean>(false);
-  let [selectedLogin, setSelected] = useState<string>("");
-  let [loginVisible, setLoginVisible] = useState<boolean>(false);
+  const { user } = useContext(empContext);
+  const [changes, setChanges] = useState<changeTS[]>([]);
+  const [field, setField] = useState<string>("");
+  const [value, setValue] = useState<string>("");
+  const [org, toggleorg] = useState<boolean>(true);
+  const [ovVisible, toggleOv] = useState<boolean>(false);
+  const [selectedLogin, setSelected] = useState<string>("");
+  const [loginVisible, setLoginVisible] = useState<boolean>(false);
 
   useEffect(() => {
     async function Init() {
-      let request = await fetch("/api/change", {
+      const request = await fetch("/api/change", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -30,7 +30,7 @@ const EditProfile = () => {
           empid: user.empid,
         }),
       });
-      let response = await request.json();
+      const response = await request.json();
       if (response.success) {
         setChanges(response.changes);
       }

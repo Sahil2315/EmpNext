@@ -15,10 +15,10 @@ import Navbar from "./Navbar"
 import InnerCont from "./InnerCont"
 
 const Container = () => {
-    let router = useRouter()
-    let [currOpened, resetCurr] = useState(0)
-    let {user, resetUser} = useContext(empContext) as empState
-    let [loading, toggleLoading] = useState(true)
+    const router = useRouter()
+    const [currOpened, resetCurr] = useState(0)
+    const {user, resetUser} = useContext(empContext) as empState
+    const [loading, toggleLoading] = useState(true)
     useEffect(() => {
       InitializeLanding(router, resetUser)
     }, [router])

@@ -5,17 +5,17 @@ import { useEffect, useState } from "react";
 import { InitializeLogin } from "./utils/TokenChecker";
 
 export default function Page() {
-  let [uName, resetUname] = useState("")
-  let [pWord, resetPword] = useState("")
+  const [uName, resetUname] = useState("")
+  const [pWord, resetPword] = useState("")
 
-  let router = useRouter()
+  const router = useRouter()
 
   useEffect(() => {
     InitializeLogin(router)
   }, [])
 
   async function loginAPI(){
-    let request = await fetch( '/api/login', {
+    const request = await fetch( '/api/login', {
       'method': 'POST', 
       'headers': {
         'Content-Type': 'application/json'
@@ -25,7 +25,7 @@ export default function Page() {
         'pword': pWord
       })
     })
-    let response = await request.json()
+    const response = await request.json()
     if(response.success){
       router.push('/userdetails')
       localStorage.setItem("userToken", response.token)

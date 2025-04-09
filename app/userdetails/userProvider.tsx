@@ -12,7 +12,7 @@ export const empContext = createContext<empState>({
 })
 
 export function UserProvider({children}: {children: ReactNode}){
-    let [user, resetUser] = useState<employeeTS>(empDefault)
+    const [user, resetUser] = useState<employeeTS>(empDefault)
     return (
         <empContext.Provider value={{user, resetUser}}>
             {children}

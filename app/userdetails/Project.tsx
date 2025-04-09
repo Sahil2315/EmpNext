@@ -2,10 +2,10 @@ import { useContext, useEffect, useState } from "react"
 import { empContext, empState } from "./userProvider"
 import { projectTS, moduleTS } from "../types"
 const Project = () => {
-  let {user} = useContext(empContext) as empState
-  let [project, setProject] = useState<projectTS>()
-  let [modules, setModules] = useState<moduleTS[]>([])
-  let [statP, resetStat] = useState<number>(0)
+  const {user} = useContext(empContext) as empState
+  const [project, setProject] = useState<projectTS>()
+  const [modules, setModules] = useState<moduleTS[]>([])
+  const [statP, resetStat] = useState<number>(0)
   useEffect(() => {
     async function get(){
       const response = await fetch('/api/projects', {
@@ -28,7 +28,7 @@ const Project = () => {
   useEffect(() => {
     resetStat(project?.statpercentage as number)
   }, [project])
-  let statBarStyle = {
+  const statBarStyle = {
     width: `${statP}%`,
     backgroundColor: '#FFB300',
     height: '5px',
@@ -56,7 +56,7 @@ const Project = () => {
             <span className="text-2xl">Modules of the Project:</span>
             {
               modules.map((module, index) => {
-                let barStyle = {
+                const barStyle = {
                   width: `${module.statval}%`,
                   backgroundColor: '#449993',
                   height: '4px',

@@ -3,9 +3,9 @@ import crossSvg from "../images/cross.svg"
 
 const Overlay = ({field, value, org, visible, toggle, empid}: {field: string, value: string, org: boolean, visible: boolean, toggle: (ov: boolean) => void, empid: string}) => {
 
-  let [nVal, setNval] = useState<string>("")
-  let [confirmVis, setConVis] = useState<boolean>(false)
-  let centerDiv = useRef<HTMLDivElement>(null)
+  const [nVal, setNval] = useState<string>("")
+  const [confirmVis, setConVis] = useState<boolean>(false)
+  const centerDiv = useRef<HTMLDivElement>(null)
   function OutsideClicker(ref: RefObject<HTMLDivElement>) {
     useEffect(() => {
       function handleClickOutside(event: MouseEvent ) {
@@ -31,7 +31,7 @@ const Overlay = ({field, value, org, visible, toggle, empid}: {field: string, va
   OutsideClicker(centerDiv as RefObject<HTMLDivElement>)
 
   async function submitChange() {
-    let request = await fetch( '/api/change/newChange', {
+    const request = await fetch( '/api/change/newChange', {
       'method': 'POST', 
       'headers': {
         'Content-Type': 'application/json'
@@ -43,7 +43,7 @@ const Overlay = ({field, value, org, visible, toggle, empid}: {field: string, va
         'org': org
       })
     })
-    let response = await request.json()
+    const response = await request.json()
     if(response.success){
       alert(`Successfully Applied for the Change of ${field}`)
       toggle(false)

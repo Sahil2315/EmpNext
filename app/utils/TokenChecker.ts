@@ -5,16 +5,16 @@ export async function InitializeLanding(
   router: AppRouterInstance,
   resetUser: (employee: employeeTS) => void
 ) {
-  let userToken = localStorage.getItem("userToken");
+  const userToken = localStorage.getItem("userToken");
   if (userToken) {
-    let request = await fetch("/api/verifyToken", {
+    const request = await fetch("/api/verifyToken", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
         userToken: userToken,
       },
     });
-    let response = await request.json();
+    const response = await request.json();
     if (response.success) {
       resetUser(response.user);
     } else {
@@ -27,16 +27,16 @@ export async function InitializeLanding(
 }
 
 export async function InitializeLogin(router: AppRouterInstance) {
-  let userToken = localStorage.getItem("userToken");
+  const userToken = localStorage.getItem("userToken");
   if (userToken) {
-    let request = await fetch("/api/verifyToken", {
+    const request = await fetch("/api/verifyToken", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
         userToken: userToken,
       },
     });
-    let response = await request.json();
+    const response = await request.json();
     if (response.success) {
       router.push("/userdetails");
     } else {

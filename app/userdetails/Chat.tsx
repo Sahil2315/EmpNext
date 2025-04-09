@@ -7,13 +7,13 @@ import { empContext, empState } from "./userProvider";
 import { messageTS } from "../types";
 
 const Chat = () => {
-  let [allChat, resetAllChat] = useState<messageTS[]>([]);
-  let [teamChat, resetTeamChat] = useState<messageTS[]>([]);
-  let [chatMode, setChatmode] = useState<string>("All");
-  let bottomOfChat = useRef<HTMLDivElement>(null);
-  let [connection, toggleConnection] = useState<boolean>(false);
-  let { user } = useContext(empContext) as empState;
-  let [msgText, setMsgText] = useState("");
+  const [allChat, resetAllChat] = useState<messageTS[]>([]);
+  const [teamChat, resetTeamChat] = useState<messageTS[]>([]);
+  const [chatMode, setChatmode] = useState<string>("All");
+  const bottomOfChat = useRef<HTMLDivElement>(null);
+  const [connection, toggleConnection] = useState<boolean>(false);
+  const { user } = useContext(empContext) as empState;
+  const [msgText, setMsgText] = useState("");
   useEffect(() => {
     if (!connection && user.team != -1) {
       socket.emit("InitConnect", {
@@ -47,7 +47,7 @@ const Chat = () => {
   socket.on("TeamChatReceived", (details: messageTS) => {
     resetTeamChat([...teamChat, { ...details }]);
   });
-  let lastEmp = useRef<string>("");
+  const lastEmp = useRef<string>("");
   function sendMsg() {
     if (msgText == "") return;
     if (chatMode == "All") {
@@ -65,7 +65,6 @@ const Chat = () => {
         empid: user.empid,
         team: user.team,
       });
-      let newDate = new Date();
       // resetTeamChat([...teamChat, {empid: user.empid, ename: user.name, date: `${newDate.getFullYear()}-${newDate.getMonth() + 1}-${newDate.getDate()}`, time: `${newDate.getHours()}-${newDate.getMinutes()}`, msgcont: msgText, team: 0}])
       setMsgText("");
     }
@@ -109,7 +108,7 @@ const Chat = () => {
           <div className="flex flex-col overflow-y-scroll h-[670px]">
             {chatMode == "All"
               ? allChat?.map((msg, index) => {
-                  let isLastSender = msg.empid == lastEmp.current;
+                  const isLastSender = msg.empid == lastEmp.current;
                   lastEmp.current = msg.empid;
 
                   if (msg.empid == user?.empid) {
@@ -150,7 +149,7 @@ const Chat = () => {
                   }
                 })
               : teamChat?.map((msg, index) => {
-                  let isLastSender = msg.empid == lastEmp.current;
+                  const isLastSender = msg.empid == lastEmp.current;
                   lastEmp.current = msg.empid;
 
                   if (msg.empid == user?.empid) {

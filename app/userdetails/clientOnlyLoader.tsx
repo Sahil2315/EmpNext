@@ -25,7 +25,7 @@ const ClientOnlyLoader = ({
   loginVisible: boolean;
   loginToggle: (vis: boolean) => void;
 }) => {
-  let { user } = useContext(empContext);
+  const { user } = useContext(empContext);
   const renderComp = () => {
     switch (document) {
       case undefined:
