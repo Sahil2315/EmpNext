@@ -1,0 +1,89 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("PG_CONNECT")
+}
+
+model change {
+  empid    String @db.Char(8)
+  field    String @db.VarChar(20)
+  value    String @db.VarChar(30)
+  chstat   String @default("Held") @db.VarChar(15)
+  changeid Int    @id @default(autoincrement())
+}
+
+model employee {
+  empid    String     @id(map: "employee_empid") @db.Char(8)
+  name     String     @db.VarChar(30)
+  dob      DateTime   @db.Date
+  email    String     @db.VarChar(30)
+  phone    String     @db.Char(10)
+  c_add    String     @db.VarChar(100)
+  p_add    String     @db.VarChar(100)
+  aadhaar  String     @db.Char(12)
+  upi      String     @db.VarChar(20)
+  dept     String     @db.VarChar(20)
+  title    String     @db.VarChar(20)
+  doj      DateTime   @db.Date
+  salary   Int
+  regport  String     @default("no") @db.VarChar(3)
+  regkey   String     @db.Char(10)
+  laptop   String     @db.VarChar(12)
+  leaves   Int        @default(0) @db.SmallInt
+  gender   String     @db.VarChar(6)
+  team     Int        @default(0) @db.SmallInt
+  logindet logindet[]
+  messages messages[]
+}
+
+model leaves {
+  empid    String   @db.Char(8)
+  Reason   String   @db.VarChar(80)
+  from     DateTime @db.Date
+  to       DateTime @db.Date
+  lstat    String   @default("Held") @db.VarChar(15)
+  team     Int?     @db.SmallInt
+  reqid    Int      @id @default(autoincrement())
+  category String   @default("PL") @db.Char(2)
+}
+
+model logindet {
+  empid    String   @db.Char(8)
+  username String   @unique(map: "logindet_username") @db.VarChar(20)
+  email    String   @db.VarChar(30)
+  password String   @db.VarChar(15)
+  employee employee @relation(fields: [empid], references: [empid], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model messages {
+  empid    String   @db.Char(8)
+  ename    String   @db.VarChar(20)
+  msgid    Int      @id @default(autoincrement())
+  date     DateTime @db.Date
+  time     DateTime @db.Time(6)
+  msgcont  String   @db.VarChar(255)
+  team     Int      @default(0) @db.SmallInt
+  employee employee @relation(fields: [empid], references: [empid], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model modules {
+  mid      Int      @id(map: "Modules_pkey") @default(autoincrement())
+  mname    String   @db.VarChar(40)
+  mstat    String   @db.VarChar(30)
+  pid      Int
+  statval  Int?     @default(0)
+  projects projects @relation(fields: [pid], references: [projectid], onDelete: NoAction, onUpdate: NoAction, map: "Project")
+}
+
+model projects {
+  team           Int?      @db.SmallInt
+  status         String    @db.VarChar(20)
+  statpercentage Int       @db.SmallInt
+  deadline       DateTime  @db.Date
+  name           String    @db.VarChar(20)
+  projectid      Int       @id @default(autoincrement())
+  modules        modules[]
+}
