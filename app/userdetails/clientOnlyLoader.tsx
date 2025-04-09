@@ -25,7 +25,6 @@ const ClientOnlyLoader = ({
   loginVisible: boolean;
   loginToggle: (vis: boolean) => void;
 }) => {
-  const { user } = useContext(empContext);
   const renderComp = () => {
     switch (document) {
       case undefined:
@@ -34,7 +33,7 @@ const ClientOnlyLoader = ({
         return (
           <div>
             <Overlay
-              empid={user.empid}
+              empid={empid}
               field={field}
               value={value}
               org={org}

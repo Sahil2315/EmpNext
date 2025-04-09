@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { employeeTS } from "../types"
 import ladyPhoto from "../images/lady.jpg"
 import manPhoto from "../images/man.jpg"

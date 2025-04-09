@@ -1,4 +1,3 @@
-import { employeeTS } from "@/app/types";
 import { searchFor } from "@/app/utils/database";
 import { NextRequest, NextResponse } from "next/server";
 

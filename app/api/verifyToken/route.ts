@@ -1,4 +1,3 @@
-import { headers } from "next/headers";
 import jwt from 'jsonwebtoken';
 import { NextRequest, NextResponse } from "next/server";
 import { completeDetails } from "@/app/utils/database";

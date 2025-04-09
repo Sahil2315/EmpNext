@@ -79,7 +79,7 @@ export async function olderLeaves(empid: string) {
   today.setMinutes(0);
   today.setSeconds(0);
   today.setMilliseconds(0);
-  const temp = await prisma.leaves.updateMany({
+  await prisma.leaves.updateMany({
     where: {
       empid: empid,
       from: {
@@ -128,14 +128,14 @@ export async function getUsername(empid: string) {
   return username;
 }
 
-const fieldMap: any = {
+const fieldMap: Record<string, string> = {
   "Email ID": "email",
   "Phone Number": "phone",
   "Current Address": "c_add",
   "Permanent Address": "p_add",
   "Team Number": "team",
   "Laptop ID": "laptop",
-  Department: "dept",
+  "Department": "dept",
   "Job Title": "title",
 };
 export async function setChangeQuery(
