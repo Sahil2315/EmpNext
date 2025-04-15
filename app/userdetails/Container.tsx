@@ -26,12 +26,12 @@ const Container = () => {
       if(user.name != "") toggleLoading(false)
     }, [user])
     return (
-      <div className='text-white bg-opacity-0'>
-        <div className="text-2xl font-bold py-2 px-4 m-4 bg-slate-700 w-max rounded bg-opacity-50">{user?.empid}</div>
+      <div className='text-white'>
+        <div className="text-2xl font-bold py-2 px-4 m-4 bg-slate-700/50 w-max rounded">{user?.empid}</div>
         <div className="flex flex-row">
           <div className="mx-32 mt-16 flex flex-col justify-center items-center">
             <img className="w-[300px] rounded-2xl" src={user?.gender == "Male" ? manPhoto.src : ladyPhoto.src }/>
-            <div className="bg-slate-700 mt-8 w-full rounded bg-opacity-50 p-4 flex flex-col">
+            <div className="bg-slate-700/50 mt-8 w-full rounded p-4 flex flex-col">
               <span className="text-xl border-b flex flex-row border-indigo-300 items-center py-1 w-max">
                 {user?.name}
                 <img className="w-[35px] ml-2" src={user?.gender == "Male" ? maleSign.src : femaleSign.src} />

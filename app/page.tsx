@@ -36,17 +36,17 @@ export default function Page() {
   }
 
   return (
-    <main className="flex flex-row text-white min-h-screen w-full bg-opacity-0">
+    <main className="flex flex-row text-white min-h-screen w-full">
       <div className="absolute h-full w-full z-30 top-0 left-0 login-bg-grad"></div>
       <div className="h-vh w-[600px] flex flex-col justify-center items-center z-40 relative">
         <span className="text-4xl mb-6 font-semibold text-shadow-4xl">Welcome to EmplOIS</span>
         <div className="w-full flex flex-col px-16">
           <span className="text-2xl text-shadow-2xl mt-12">Username</span>
-          <input onChange={(e) => resetUname(e.target.value)} className="text-slate-300 text-xl z-40 relative bg-slate-800 rounded py-2 px-2 mt-2 bg-opacity-50 focus:outline-none focus:ring focus:ring-violet-600" type="text" />
+          <input onChange={(e) => resetUname(e.target.value)} className="text-slate-300 text-xl z-40 relative bg-slate-800/50 rounded py-2 px-2 mt-2 focus:outline-none focus:ring focus:ring-violet-600" type="text" />
         </div>
         <div className="w-full flex flex-col px-16">
           <span className="text-2xl text-shadow-2xl mt-12">Password</span>
-          <input onChange={(e) => resetPword(e.target.value)} className="text-slate-300 text-xl z-40 relative bg-slate-800 rounded py-2 px-2 mt-2 bg-opacity-50 focus:outline-none focus:ring focus:ring-violet-600" type="password" />
+          <input onChange={(e) => resetPword(e.target.value)} className="text-slate-300 text-xl z-40 relative bg-slate-800/50 rounded py-2 px-2 mt-2 focus:outline-none focus:ring focus:ring-violet-600" type="password" />
         </div>
         <button onClick={loginAPI} className="bg-indigo-600 px-6 py-1 font-semibold my-16 rounded hover:bg-violet-600">Sign In</button>
       </div>

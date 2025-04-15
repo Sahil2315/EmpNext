@@ -35,7 +35,7 @@ const Project = () => {
     borderRadius: '3px',
   }
   return (
-    <div className={`mt-4 p-2 w-full h-full bg-opacity-20 rounded-lg bg-indigo-600`}>
+    <div className={`mt-4 p-2 w-full h-full rounded-lg bg-indigo-600/20`}>
         <div className="flex flex flex-col bg-black/50 h-full w-full relative rounded-lg">
           <div className="flex flex-row my-4 w-full text-xl">
             <span className="text-2xl ml-4 rounded-[3px] pb-2 border-b">{project?.name}</span>

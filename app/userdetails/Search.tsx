@@ -31,11 +31,11 @@ const Search = () => {
   }, [searchVal])
   
   return (
-    <div className={`mt-4 w-full h-full bg-opacity-20 rounded-lg bg-indigo-600 flex flex-col items-center`}>
+    <div className={`mt-4 w-full h-full rounded-lg bg-indigo-600/20 flex flex-col items-center`}>
         <div className="mt-4">
-          <input onChange={(e) => {setSearchVal(e.target.value)}} type="text" className="w-[500px] text-xl px-3 py-1 outline-none rounded-md bg-black bg-opacity-30" placeholder="Enter the Name or Employee ID"/>
+          <input onChange={(e) => {setSearchVal(e.target.value)}} type="text" className="w-[500px] text-xl px-3 py-1 outline-none rounded-md bg-black/30" placeholder="Enter the Name or Employee ID"/>
         </div>
-        <div className="w-[80%] h-[85%] rounded-md bg-opacity-40 overflow-y-scroll bg-black pb-4 mt-4">
+        <div className="w-[80%] h-[85%] rounded-md overflow-y-scroll bg-black/40 pb-4 mt-4">
           {
             empList.length || searchVal == "" ? 
             empList.map((item: employeeTS, index: number) => {
@@ -44,7 +44,7 @@ const Search = () => {
                   <img className="w-[150px] rounded-2xl " src={item?.gender == "Male" ? manPhoto.src : ladyPhoto.src }/>
                   <div className="ml-16 flex flex-row items-center">
                     <div className="flex flex-col w-[200px]">
-                      <span className="text-xl w-max px-4 py-2 rounded bg-slate-600 bg-opacity-50">{item.empid}</span>
+                      <span className="text-xl w-max px-4 py-2 rounded bg-slate-600/5050">{item.empid}</span>
                       <span className="text-lg mt-4">{item.name}</span>
                     </div>
                     <div className="flex flex-col ml-8 w-[230px]">

@@ -144,13 +144,13 @@ const LoginChange = ({currSelected, setSelected, visible, toggle}: {currSelected
     }
   }
   return (
-    <div className={visible ? 'cursor-pointer absolute top-0 left-0 w-full h-full z-50 bg-slate-700 bg-opacity-50 backdrop-blur flex flex-col justify-center items-center': 'hidden'}>
+    <div className={visible ? 'cursor-pointer absolute top-0 left-0 w-full h-full z-50 bg-slate-700/50 backdrop-blur flex flex-col justify-center items-center': 'hidden'}>
       <div ref={centerDiv} className='p-8 relative bg-slate-800 flex flex-col justify-center items-center cursor-default rounded-lg'>
         <div className='flex flex-row text-2xl rounded'>
-          <button onClick={() => setSelected("UN")} className={`py-1 px-4 ${currSelected == "UN" ? 'bg-indigo-500 bg-opacity-50' : ' bg-slate-600 hover:bg-opacity-50'} border-r-2 border-slate-500 rounded-l`}>
+          <button onClick={() => setSelected("UN")} className={`py-1 px-4 ${currSelected == "UN" ? 'bg-indigo-500/50' : 'bg-slate-600 hover:bg-slate-600/50'} border-r-2 border-slate-500 rounded-l`}>
             Username
           </button>
-          <button onClick={() => setSelected("PW")} className={`py-1 px-4 ${currSelected == "PW" ? 'bg-indigo-500 bg-opacity-50' : ' bg-slate-600 hover:bg-opacity-50'}`}>
+          <button onClick={() => setSelected("PW")} className={`py-1 px-4 ${currSelected == "PW" ? 'bg-indigo-500/50' : 'bg-slate-600 hover:bg-slate-600/50'}`}>
             Password
           </button>
         </div>
@@ -158,32 +158,32 @@ const LoginChange = ({currSelected, setSelected, visible, toggle}: {currSelected
           {
             currSelected == "UN" ? 
             <div className="flex flex-col mt-8 items-center">
-              <span className="text-xl py-1 w-full text-center px-8 rounded-md bg-slate-700 bg-opacity-70">Current Username: <span className="text-emerald-300">{username}</span></span>
+              <span className="text-xl py-1 w-full text-center px-8 rounded-md bg-slate-700/70">Current Username: <span className="text-emerald-300">{username}</span></span>
               <div className="flex flex-row items-center mt-8">
                 <span className="text-xl mr-4 w-[200px] text-end">New Username:</span>
-                <input value={newUsername} onChange={(e) => setNUN(e.target.value)} type="text" placeholder="Enter Username Here" className="py-1 px-2 bg-slate-700 bg-opacity-60 rounded-md outline-none"/>
+                <input value={newUsername} onChange={(e) => setNUN(e.target.value)} type="text" placeholder="Enter Username Here" className="py-1 px-2 bg-slate-700/60 rounded-md outline-none"/>
               </div>
               <div className="flex flex-row items-center mt-8">
                 <span className="text-xl mr-4 w-[200px] text-end">Password:</span>
-                <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder="Enter Password Here" className="py-1 px-2 bg-slate-700 bg-opacity-60 rounded-md outline-none"/>
+                <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder="Enter Password Here" className="py-1 px-2 bg-slate-700/60 rounded-md outline-none"/>
               </div>
-              <button onClick={openCScreen} className="mt-10 px-4 py-1 bg-indigo-600 w-max hover:bg-opacity-70">Submit</button>
+              <button onClick={openCScreen} className="mt-10 px-4 py-1 bg-indigo-600 w-max hover:bg-bg-indigo-600/70">Submit</button>
             </div>
             :
             <div className="flex items-center flex-col">
               <div className="flex flex-row items-center mt-10">
                 <span className="w-[240px] text-end text-xl mr-4 ">Old Password:</span>
-                <input value={oldPassword} onChange={(e) => {setOldPW(e.target.value)}} type="password" placeholder="Old Password Here"  className="bg-slate-700 bg-opacity-60 px-2 py-1 rounded-md outline-none"/>
+                <input value={oldPassword} onChange={(e) => {setOldPW(e.target.value)}} type="password" placeholder="Old Password Here"  className="bg-slate-700/60 px-2 py-1 rounded-md outline-none"/>
               </div>
               <div className="flex flex-row items-center mt-6">
                 <span className="w-[240px] text-end text-xl mr-4 ">New Password:</span>
-                <input value={newPassword} onChange={(e) => {setNewPW(e.target.value)}} type="password" placeholder="New Password Here"  className="bg-slate-700 bg-opacity-60 px-2 py-1 rounded-md outline-none"/>
+                <input value={newPassword} onChange={(e) => {setNewPW(e.target.value)}} type="password" placeholder="New Password Here"  className="bg-slate-700/60 px-2 py-1 rounded-md outline-none"/>
               </div>
               <div className="flex flex-row items-center mt-6">
                 <span className="w-[240px] text-end text-xl mr-4 ">Retype Password:</span>
-                <input value={confirmPassword} onChange={(e) => {setConfirmPW(e.target.value)}} type="password" placeholder="Retype Password Here"  className="bg-slate-700 bg-opacity-60 px-2 py-1 rounded-md outline-none"/>
+                <input value={confirmPassword} onChange={(e) => {setConfirmPW(e.target.value)}} type="password" placeholder="Retype Password Here"  className="bg-slate-700/60 px-2 py-1 rounded-md outline-none"/>
               </div>
-              <button onClick={openCScreen} className="mt-10 px-4 py-1 bg-indigo-600 w-max hover:bg-opacity-70">Submit</button>
+              <button onClick={openCScreen} className="mt-10 px-4 py-1 bg-indigo-600 w-max hover:bg-indigo-600/70">Submit</button>
             </div>
           }
         </div>
@@ -195,8 +195,8 @@ const LoginChange = ({currSelected, setSelected, visible, toggle}: {currSelected
             <span className="ml-4 bg-violet-500 py-1 px-2 rounded-lg items-center text-lg"> {"->"} </span>
             <span className="ml-4 bg-emerald-500 py-1 px-2 rounded-lg text-lg">{currSelected == "UN" ? newUsername : "****"}</span>
           </div>
-          <button onClick={finalSubmit} className="mt-6 bg-indigo-600 px-4 py-1 rounded-md hover:bg-opacity-80">Submit</button>
-          <button onClick={() => toggleCscreen(false)}><img src={crossSvg.src} className="bg-red-500 absolute top-4 right-4 rounded-lg w-[50px] p-2 hover:bg-opacity-80"/></button>
+          <button onClick={finalSubmit} className="mt-6 bg-indigo-600 px-4 py-1 rounded-md hover:bg-indigo-600/80">Submit</button>
+          <button onClick={() => toggleCscreen(false)}><img src={crossSvg.src} className="bg-red-500 absolute top-4 right-4 rounded-lg w-[50px] p-2 hover:bg-red-500/80"/></button>
         </div>
       </div>
     </div>
