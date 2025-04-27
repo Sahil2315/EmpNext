@@ -1,6 +1,8 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import { io } from "socket.io-client";
-const socket = io("http://13.50.146.71", { transports: ["websocket"] });
+const socket = io("https://emplois.sahilnigam.online", {
+  transports: ["websocket"],
+});
 import teamLogo from "../images/teamLogo.svg";
 import globeLogo from "../images/globeLogo.svg";
 import { empContext, empState } from "./userProvider";
@@ -70,9 +72,7 @@ const Chat = () => {
     }
   }
   return (
-    <div
-      className={`mt-4 w-full h-full rounded-lg bg-indigo-600/20 p-2`}
-    >
+    <div className={`mt-4 w-full h-full rounded-lg bg-indigo-600/20 p-2`}>
       <div className="flex flex-row w-full h-full bg-black/50">
         <div className="flex flex-col justify-center items-center px-6 my-4 border-r-2 border-violet-500/15">
           <button
