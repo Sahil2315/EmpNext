@@ -1,8 +1,6 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import { io } from "socket.io-client";
-const socket = io("https://emplois.sahilnigam.online", {
-  autoConnect: false,
-});
+const socket = io("https://emplois.sahilnigam.online");
 import teamLogo from "../images/teamLogo.svg";
 import globeLogo from "../images/globeLogo.svg";
 import { empContext, empState } from "./userProvider";
