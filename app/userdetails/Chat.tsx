@@ -2,6 +2,7 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { io } from "socket.io-client";
 const socket = io("https://emplois.sahilnigam.online", {
   transports: ["websocket"],
+  rejectUnauthorized: false,
 });
 import teamLogo from "../images/teamLogo.svg";
 import globeLogo from "../images/globeLogo.svg";
@@ -22,6 +23,7 @@ const Chat = () => {
         team: user.team,
       });
       toggleConnection(true);
+      console.log("Connected")
     }
   }, [user]);
   useEffect(() => {
