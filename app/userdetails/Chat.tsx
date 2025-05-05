@@ -23,7 +23,6 @@ const Chat = () => {
         team: user.team,
       });
       toggleConnection(true);
-      console.log("Connected");
     }
   }, [user]);
   useEffect(() => {
@@ -43,7 +42,6 @@ const Chat = () => {
   socket.on("InitResp", (arr) => {
     resetAllChat(arr.allChat);
     resetTeamChat(arr.teamChat);
-    console.log(arr);
   });
   socket.on("AllChatReceived", (details: messageTS) => {
     resetAllChat([...allChat, { ...details }]);
