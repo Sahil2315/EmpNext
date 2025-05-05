@@ -1,6 +1,6 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import { io } from "socket.io-client";
-const socket = io("https://emplois.sahilnigam.online", {
+const socket = io("https://emploisback.sahilnigam.online", {
   transports: ["websocket"],
   rejectUnauthorized: false,
 });
@@ -23,7 +23,7 @@ const Chat = () => {
         team: user.team,
       });
       toggleConnection(true);
-      console.log("Connected")
+      console.log("Connected");
     }
   }, [user]);
   useEffect(() => {
