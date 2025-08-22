@@ -3,15 +3,17 @@
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { InitializeLogin } from "./utils/TokenChecker";
+import Loader from "./userdetails/Loader";
 
 export default function Page() {
   const [uName, resetUname] = useState("");
   const [pWord, resetPword] = useState("");
+  const [initLoading, toggleInitLoading] = useState<boolean>(false)
 
   const router = useRouter();
 
   useEffect(() => {
-    InitializeLogin(router);
+    InitializeLogin(router, toggleInitLoading);
   }, []);
 
   function autoSignin() {
@@ -37,6 +39,12 @@ export default function Page() {
     } else {
       alert("Invalid Credentials");
     }
+  }
+
+  if(initLoading){
+    return(
+      <Loader />
+    )
   }
 
   return (
